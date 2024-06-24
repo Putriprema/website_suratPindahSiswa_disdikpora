@@ -1,0 +1,171 @@
+/* Gaya dasar untuk seluruh halaman */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Memastikan footer berada di bawah halaman */
+    position: relative; /* Memastikan posisi relatif untuk footer positioning */
+}
+
+header, footer {
+    text-align: center;
+    padding: 1em 0;
+}
+
+header h1 {
+    margin-top: 55px; /* Jarak dari atas */
+    margin-left: 1.5cm;
+    text-align: left;
+}
+
+
+.header-image {
+    width: 600px; /* Ukuran foto 600x600px */
+    height: 600px;
+    margin-top: 1cm;
+}
+
+.text {
+    margin-top: 1cm; /* Jarak dari atas */
+    text-align: left; /* Pusatkan teks ke kiri */
+    flex: 1; /* Agar teks tetap sejajar dengan gambar */
+    margin-left: 1.5cm;
+}
+
+.text h2 {
+    font-size: 1.5em; /* Besarkan font h2 */
+    margin-bottom: 10px; /* Beri jarak bawah */
+}
+
+.text p {
+    margin-bottom: 20px; /* Beri jarak bawah */
+}
+
+.text .button {
+    display: inline-block; /* Tampilkan tombol sebagai inline-block */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.text .button:hover {
+    background-color: #0056b3;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3); /* Transparan */
+    padding: 5px;
+}
+
+.nav-logo {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.5em;
+    margin-left: 50px; /* Jarak dari tepi kiri */
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-item {
+    color: #333;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    margin-right: 50px; /* Jarak dari tepi kanan */
+}
+
+.nav-item:hover,
+.nav-item:focus,
+.nav-item:active {
+    color: #007bff;
+    background-color: rgba(0, 0, 0, 0.1); /* Background transparan saat di-hover atau di-klik */
+    border-radius: 5px;
+}
+
+img {
+    margin-top: 1cm;
+}
+/* Gaya responsif */
+@media (max-width: 800px) {
+    header h1, footer p {
+        font-size: 1.2em;
+    }
+
+    .button {
+        padding: 8px 16px;
+    }
+
+    .main-header {
+        padding: 0 10px; /* Sesuaikan padding di layar kecil */
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-image {
+        margin-left: 500cm;
+        margin-top: 10px;
+        width: 100%; /* Mengisi lebar saat tampilan di layar kecil */
+        height: auto; /* Mengatur tinggi agar proporsi tetap terjaga */
+    }
+
+    .text {
+        margin-top: 1cm; /* Jarak 0.5 cm dari atas pada layar kecil */
+    }
+}
+
+@media (max-width: 500px) {
+    header h1, footer p {
+        font-size: 1.2em;
+    }
+
+    .button {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-item {
+        padding: 5px;
+    }
+
+    .nav-logo,
+    .nav-item {
+        margin-left: 0.5cm; /* Jarak lebih kecil di layar kecil */
+        margin-right: 0.5cm; /* Jarak lebih kecil di layar kecil */
+    }
+
+    .text {
+        margin-top: 1cm; /* Jarak 0.5 cm dari atas pada layar sangat kecil */
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #000; /* Warna hitam */
+    color: #fff; /* Warna tulisan putih */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1em 0;
+}

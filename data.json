@@ -1,0 +1,41 @@
+[
+    {
+        "kode_surat": "400.3.5/8457/Disdikpora",
+        "tgl": "1 Juni 2024",
+        "nama_siswa": "Mark Otto",
+        "nisn": "1234567890",
+        "jenis_kelamin": "Laki-laki",
+        "asal_sekolah_lama": "SMP Negeri 1 Denpasar",
+        "alamat": "Jl. Raya No. 1 Denpasar",
+        "kabupaten": "Denpasar",
+        "provinsi": "Bali",
+        "nama_sekolah_tujuan": "SMA Negeri 1 Denpasar",
+        "alasan": "Pindah domisili"
+    },
+    {
+        "kode_surat": "400.3.5/8458/Disdikpora",
+        "tgl": "2 Juni 2024",
+        "nama_siswa": "Jacob Thornton",
+        "nisn": "0987654321",
+        "jenis_kelamin": "Laki-laki",
+        "asal_sekolah_lama": "SMP Negeri 2 Denpasar",
+        "alamat": "Jl. Merdeka No. 2 Denpasar",
+        "kabupaten": "Denpasar",
+        "provinsi": "Bali",
+        "nama_sekolah_tujuan": "SMA Negeri 2 Denpasar",
+        "alasan": "Mengikuti orang tua"
+    },
+    {
+        "kode_surat": "400.3.5/8459/Disdikpora",
+        "tgl": "3 Juni 2024",
+        "nama_siswa": "Larry Bird",
+        "nisn": "1122334455",
+        "jenis_kelamin": "Laki-laki",
+        "asal_sekolah_lama": "SMP Negeri 3 Denpasar",
+        "alamat": "Jl. Patriot No. 3 Denpasar",
+        "kabupaten": "Denpasar",
+        "provinsi": "Bali",
+        "nama_sekolah_tujuan": "SMA Negeri 3 Denpasar",
+        "alasan": "Alasan keluarga"
+    }
+]
