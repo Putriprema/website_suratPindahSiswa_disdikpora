@@ -4,130 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Judul Halaman</title>
-    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
 </head>
 <style>
     /* Gaya dasar untuk seluruh halaman */
-body {
-    font-family: Arial, sans-serif;
-    background-color: white; /* Warna latar belakang putih */
-    margin: 0;
-    padding: 0;
-    min-height: 100vh; /* Memastikan footer berada di bawah halaman */
-    position: relative; /* Memastikan posisi relatif untuk footer positioning */
-}
-
-/* Gaya untuk header */
-header {
-    background-color: #f8f9fa; /* Warna latar belakang header */
-    padding: 20px 0; /* Padding atas dan bawah 20px, samping 0 */
-    text-align: center;
-}
-
-.header-content {
-    height: 100vh; /* Tinggi 100% dari viewport */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.header-content h1 {
-    font-size: 2.5rem; /* Ukuran font besar di header */
-    margin-bottom: 20px; /* Jarak bawah antara judul dan teks */
-}
-
-.header-content .text {
-    max-width: 80%; /* Lebar maksimal teks */
-    margin: 20px auto; /* Margin di atas dan bawah, otomatis di tengah */
-}
-
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff; /* Warna tombol */
-    color: white; /* Warna teks di dalam tombol */
-    text-decoration: none; /* Menghilangkan garis bawah dari tautan */
-    border-radius: 5px; /* Tepi melengkung pada tombol */
-    transition: background-color 0.3s ease; /* Transisi saat hover */
-}
-
-.button:hover {
-    background-color: #0056b3; /* Warna tombol saat dihover */
-}
-
-/* Gaya untuk footer */
-footer {
-    background-color: #343a40; /* Warna latar belakang footer */
-    color: white; /* Warna teks putih */
-    text-align: center;
-    padding: 10px 0; /* Padding atas dan bawah 10px, samping 0 */
-    position: absolute; /* Menempatkan di bawah halaman */
-    width: 100%; /* Lebar 100% dari viewport */
-    bottom: 0; /* Meletakkan di bagian bawah halaman */
-}
-
-/* Responsivitas menggunakan media queries */
-@media (max-width: 800px) {
-    .header-content h1 {
-        font-size: 2rem; /* Ukuran font lebih kecil di layar kecil */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: white; /* Warna latar belakang putih */
+        margin: 0;
+        padding: 0;
+        min-height: 100vh; /* Memastikan footer berada di bawah halaman */
+        position: relative; /* Memastikan posisi relatif untuk footer positioning */
     }
 
-    .header-content .text {
-        font-size: 0.9rem; /* Ukuran font lebih kecil di layar kecil */
-        margin-top: 10px; /* Jarak atas kurang dari ukuran */
+    /* Gaya untuk header */
+    header {
+        background-color: #f8f9fa; /* Warna latar belakang header */
+        padding: 20px 0; /* Padding atas dan bawah 20px, samping 0 */
+        text-align: center;
     }
 
-    .button {
-        padding: 8px 16px; /* Padding yang kurang di layar kecil */
-    }
-
-    .navbar-brand,
-    .nav-item {
-        margin-left: 0; /* Menghapus margin di layar kecil */
-        margin-right: 0; /* Menghapus margin di layar kecil */
-    }
-}
-
-@media (max-width: 500px) {
-    .header-content h1 {
-        font-size: 1.8rem; /* Ukuran font lebih kecil di layar sangat kecil */
-    }
-
-    .header-content .text {
-        font-size: 0.8rem; /* Ukuran font lebih kecil di layar sangat kecil */
-    }
-}
-
-
-    /* CSS Kustom */
     .header-content {
-        height: 100vh; /* Menggunakan tinggi 100% dari viewport */
+        height: 100vh; /* Tinggi 100% dari viewport */
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
     }
+
+    .header-content h1 {
+        font-size: 2.5rem; /* Ukuran font besar di header */
+        margin-bottom: 20px; /* Jarak bawah antara judul dan teks */
+    }
+
+    .header-content .text {
+        max-width: 80%; /* Lebar maksimal teks */
+        margin: 20px auto; /* Margin di atas dan bawah, otomatis di tengah */
+    }
+
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff; /* Warna tombol */
+        color: white; /* Warna teks di dalam tombol */
+        text-decoration: none; /* Menghilangkan garis bawah dari tautan */
+        border-radius: 5px; /* Tepi melengkung pada tombol */
+        transition: background-color 0.3s ease; /* Transisi saat hover */
+    }
+
+    .button:hover {
+        background-color: #0056b3; /* Warna tombol saat dihover */
+    }
+
+    /* Gaya untuk footer */
+    footer {
+        background-color: #343a40; /* Warna latar belakang footer */
+        color: white; /* Warna teks putih */
+        text-align: center;
+        padding: 10px 0; /* Padding atas dan bawah 10px, samping 0 */
+        position: absolute; /* Menempatkan di bawah halaman */
+        width: 100%; /* Lebar 100% dari viewport */
+        bottom: 0; /* Meletakkan di bagian bawah halaman */
+    }
+
+    /* Navbar */
     .navbar {
-        background-color: rgba(0, 0, 0, 0.0); /* Warna latar belakang navbar dengan opacity */
-        border-bottom: none; /* Menghilangkan garis bawah navbar */
+        background-color: #f8f9fa; /* Warna latar belakang navbar */
+        border-bottom: 1px solid #ddd; /* Garis bawah navbar */
     }
 
     .navbar-brand {
         font-weight: bold; /* Memberi tebal pada brand */
         color: #333; /* Warna teks brand */
-        margin-top: 3px; /* Jarak 1 cm dari atas */
-        margin-left: 4cm;
+        margin-left: 1rem; /* Jarak kiri dari logo */
     }
 
     .navbar-nav {
-        margin-left: auto; /* Menggeser navbar-nav ke kanan */
-        margin-right: 4cm; /* Jarak 4 cm dari tepi kanan halaman */
+        margin-left: 1rem; /* Jarak kiri untuk menu */
     }
 
     .nav-item {
@@ -143,231 +97,84 @@ footer {
         color: #007bff; /* Warna teks saat dihover (biru) */
     }
 
-    .header-content {
-        text-align: center;
-        margin-top: 3rem;
+    .dropdown-menu {
+        background-color: #f8f9fa; /* Warna latar belakang dropdown menu */
     }
 
-    form {
-        max-width: 600px;
-        margin: 0 auto;
+    .dropdown-item {
+        color: #333; /* Warna teks item dropdown */
     }
 
-    /* Custom styling for form elements */
-    .form-label {
-        font-weight: bold;
+    .dropdown-item:hover {
+        background-color: #007bff; /* Warna latar belakang saat hover pada item dropdown */
+        color: #fff; /* Warna teks saat hover pada item dropdown */
     }
 
-    .form-control {
-        margin-bottom: 10px;
-    }
-
-    .btn-primary {
-        margin-top: 10px;
-    }
-    /* Penyesuaian untuk placeholder menggunakan kelas text-secondary */
-    ::placeholder {
-        color: #6c757d; /* Warna abu-abu dari kelas text-secondary */
-        opacity: 1; /* Pastikan opasitas 1 agar warna benar-benar terlihat */
-    }
-
-    /* Gaya dasar untuk seluruh halaman */
-    body {
-        font-family: Arial, sans-serif;
-        background-color: white; /* Warna latar belakang putih */
-        margin: 0;
-        padding: 0;
-        min-height: 100vh; /* Memastikan footer berada di bawah halaman */
-        position: relative; /* Memastikan posisi relatif untuk footer positioning */
-    }
-
-    /* Gaya responsif */
-    @media (max-width: 800px) {
-        header h1, footer p {
-            font-size: 1.2em;
+    @media (max-width: 992px) {
+        .navbar-nav {
+            margin-left: 0; /* Reset margin untuk navbar-nav */
+            text-align: center; /* Pusatkan link di navbar */
         }
 
-        .button {
-            padding: 8px 16px;
+        .navbar-collapse {
+            justify-content: center; /* Pusatkan toggle button di navbar */
         }
 
-        .main-header {
-            padding: 0 10px; /* Sesuaikan padding di layar kecil */
-        }
-
-        .header-content {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .text {
-            margin-top: 1cm; /* Jarak 0.5 cm dari atas pada layar kecil */
-        }
-    }
-
-    @media (max-width: 500px) {
-        header h1, footer p {
-            font-size: 1.2em;
-        }
-
-        .button {
-            width: 100%;
-            box-sizing: border-box;
-            text-align: center;
-        }
-
-        .nav-menu {
-            flex-direction: column;
-            align-items: center;
+        .navbar-toggler {
+            margin-right: 0; /* Hapus margin pada toggle button di layar kecil */
         }
 
         .nav-item {
-            padding: 5px;
-        }
-
-        .nav-logo,
-        .nav-item {
-            margin-left: 0.5cm; /* Jarak lebih kecil di layar kecil */
-            margin-right: 0.5cm; /* Jarak lebih kecil di layar kecil */
-        }
-
-        .text {
-            margin-top: 1cm; /* Jarak 0.5 cm dari atas pada layar sangat kecil */
+            margin-right: 0;
+            margin-bottom: 10px; /* Tambahkan ruang di bawah setiap item pada layar kecil */
         }
     }
-
-    .navbar {
-    background-color: #f8f9fa; /* Warna latar belakang navbar */
-    border-bottom: 1px solid #ddd; /* Garis bawah navbar */
-}
-
-.navbar-brand {
-    font-weight: bold; /* Memberi tebal pada brand */
-    color: #333; /* Warna teks brand */
-}
-
-.navbar-nav {
-    margin-left: auto; /* Menggeser navbar-nav ke kanan */
-}
-
-.nav-item {
-    margin-right: 10px; /* Margin antara item navbar */
-}
-
-.nav-link {
-    color: #333; /* Warna teks link */
-    transition: color 0.3s ease; /* Transisi warna saat hover */
-}
-
-.nav-link:hover {
-    color: #007bff; /* Warna teks saat dihover (biru) */
-}
-
-@media (max-width: 992px) {
-    .navbar-nav {
-        margin-left: 0; /* Reset margin untuk navbar-nav */
-        text-align: center; /* Pusatkan link di navbar */
-    }
-
-    .navbar-collapse {
-        justify-content: center; /* Pusatkan toggle button di navbar */
-    }
-
-    .navbar-toggler {
-        margin-right: 0; /* Hapus margin pada toggle button di layar kecil */
-    }
-
-    .nav-item {
-        margin-right: 0;
-        margin-bottom: 10px; /* Tambahkan ruang di bawah setiap item pada layar kecil */
-    }
-}
-.navbar {
-    background-color: #f8f9fa; /* Warna latar belakang navbar */
-    border-bottom: 1px solid #ddd; /* Garis bawah navbar */
-}
-
-.navbar-brand {
-    font-weight: bold; /* Memberi tebal pada brand */
-    color: #333; /* Warna teks brand */
-    margin-left: 1rem; /* Jarak kiri dari logo */
-}
-
-.navbar-nav {
-    margin-left: 1rem; /* Jarak kiri untuk menu */
-}
-
-.nav-item {
-    margin-right: 10px; /* Margin antara item navbar */
-}
-
-.nav-link {
-    color: #333; /* Warna teks link */
-    transition: color 0.3s ease; /* Transisi warna saat hover */
-}
-
-.nav-link:hover {
-    color: #007bff; /* Warna teks saat dihover (biru) */
-}
-
-@media (max-width: 992px) {
-    .navbar-nav {
-        margin-left: 0; /* Reset margin untuk navbar-nav */
-        text-align: center; /* Pusatkan link di navbar */
-    }
-
-    .navbar-collapse {
-        justify-content: center; /* Pusatkan toggle button di navbar */
-    }
-
-    .navbar-toggler {
-        margin-right: 0; /* Hapus margin pada toggle button di layar kecil */
-    }
-
-    .nav-item {
-        margin-right: 0;
-        margin-bottom: 10px; /* Tambahkan ruang di bawah setiap item pada layar kecil */
-    }
-}
-
 </style>
-</head>
 <body>
     <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="loginadmin.html">Login sebagai admin</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Logo</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="loginadmin.html">Login sebagai Admin</a>
+                                <a class="dropdown-item" href="#">Fitur lainnya</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <div class="header-content">
             <h1>Selamat Datang di Halaman Web Kami</h1>
             <div class="text">
                 <h2>Selamat datang</h2>
                 <p>website pembuatan surat mutasi perpindahan siswa. Anda bisa melakukan pembuatan surat mutasi pada website ini.</p>
-                <p>silahkan memulai pembuatan surat dengan mengklik tombol dibawah ini!</p>
+                <p>Silahkan memulai pembuatan surat dengan mengklik tombol dibawah ini!</p>
                 <a href="form.html" class="button">Buat surat disini</a>
             </div>
         </div>
-        <div class="img">
-        <!-- <img src="index.png" alt="Foto" class="header-image"> -->
-    </div>
     </header>
     <footer>
         <p>&copy; 2024 Hak Cipta Dilindungi.</p>
     </footer>
+    <!-- Script Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
