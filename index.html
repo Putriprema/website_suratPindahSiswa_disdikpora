@@ -11,6 +11,100 @@
 
 </head>
 <style>
+    /* Gaya dasar untuk seluruh halaman */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white; /* Warna latar belakang putih */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Memastikan footer berada di bawah halaman */
+    position: relative; /* Memastikan posisi relatif untuk footer positioning */
+}
+
+/* Gaya untuk header */
+header {
+    background-color: #f8f9fa; /* Warna latar belakang header */
+    padding: 20px 0; /* Padding atas dan bawah 20px, samping 0 */
+    text-align: center;
+}
+
+.header-content {
+    height: 100vh; /* Tinggi 100% dari viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.header-content h1 {
+    font-size: 2.5rem; /* Ukuran font besar di header */
+    margin-bottom: 20px; /* Jarak bawah antara judul dan teks */
+}
+
+.header-content .text {
+    max-width: 80%; /* Lebar maksimal teks */
+    margin: 20px auto; /* Margin di atas dan bawah, otomatis di tengah */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Warna tombol */
+    color: white; /* Warna teks di dalam tombol */
+    text-decoration: none; /* Menghilangkan garis bawah dari tautan */
+    border-radius: 5px; /* Tepi melengkung pada tombol */
+    transition: background-color 0.3s ease; /* Transisi saat hover */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Warna tombol saat dihover */
+}
+
+/* Gaya untuk footer */
+footer {
+    background-color: #343a40; /* Warna latar belakang footer */
+    color: white; /* Warna teks putih */
+    text-align: center;
+    padding: 10px 0; /* Padding atas dan bawah 10px, samping 0 */
+    position: absolute; /* Menempatkan di bawah halaman */
+    width: 100%; /* Lebar 100% dari viewport */
+    bottom: 0; /* Meletakkan di bagian bawah halaman */
+}
+
+/* Responsivitas menggunakan media queries */
+@media (max-width: 800px) {
+    .header-content h1 {
+        font-size: 2rem; /* Ukuran font lebih kecil di layar kecil */
+    }
+
+    .header-content .text {
+        font-size: 0.9rem; /* Ukuran font lebih kecil di layar kecil */
+        margin-top: 10px; /* Jarak atas kurang dari ukuran */
+    }
+
+    .button {
+        padding: 8px 16px; /* Padding yang kurang di layar kecil */
+    }
+
+    .navbar-brand,
+    .nav-item {
+        margin-left: 0; /* Menghapus margin di layar kecil */
+        margin-right: 0; /* Menghapus margin di layar kecil */
+    }
+}
+
+@media (max-width: 500px) {
+    .header-content h1 {
+        font-size: 1.8rem; /* Ukuran font lebih kecil di layar sangat kecil */
+    }
+
+    .header-content .text {
+        font-size: 0.8rem; /* Ukuran font lebih kecil di layar sangat kecil */
+    }
+}
+
+
     /* CSS Kustom */
     .header-content {
         height: 100vh; /* Menggunakan tinggi 100% dari viewport */
