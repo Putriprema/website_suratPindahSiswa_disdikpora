@@ -1,16 +1,14 @@
 <?php
-$servername = "localhost"; // Ganti dengan nama server MySQL Anda
-$username = "username"; // Ganti dengan username MySQL Anda
-$password = " "; // Ganti dengan password MySQL Anda
-$dbname = "rekap_surat"; // Ganti dengan nama database Anda
+$localhost = 'localhost';       // Host database (biasanya localhost)
+$username = 'root';        // Username untuk mengakses database
+$password = '';            // Password untuk mengakses database (kosongkan jika tidak ada)
+$dbname = 'surat';  // Nama database yang digunakan
 
-// Membuat koneksi
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Buat koneksi ke database
+$con = new mysqli($localhost, $username, $password, $dbname);
 
-// Memeriksa koneksi
-if ($conn->connect_error) {
-    die("Koneksi ke database gagal: " . $conn->connect_error);
-} else {
-    echo "Koneksi ke database berhasil!";
+// Periksa koneksi
+if ($con->connect_error) {
+    die("Koneksi gagal: " . $con->connect_error);
 }
 ?>

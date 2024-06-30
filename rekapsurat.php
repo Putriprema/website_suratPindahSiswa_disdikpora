@@ -1,12 +1,65 @@
-<!-- rekapsurat.html -->
 <?php
 session_start();
 
 // Cek apakah pengguna sudah login
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header('Location: rekapsurat.php');
+    header('Location: login.php'); // Ganti sesuai halaman login Anda
     exit;
 }
+
+include_once "koneksi.php"; // Sertakan file konfigurasi database
+
+// Membuat koneksi ke database
+$conn = new mysqli($localhost, $username, $password, $dbname);
+
+// Memeriksa koneksi
+if ($conn->connect_error) {
+    die("Koneksi ke database gagal: " . $conn->connect_error);
+}
+
+$data_surat = []; // Inisialisasi array untuk menyimpan data surat
+
+// Proses pencarian jika ada input dari pengguna
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['search'])) {
+    $keyword = $_GET['search'];
+
+    // Query SQL untuk mencari data berdasarkan keyword
+    $sql = "SELECT * FROM rekapsurat WHERE 
+            id_surat LIKE '%$keyword%' OR 
+            tgl LIKE '%$keyword%' OR 
+            nama_siswa LIKE '%$keyword%' OR 
+            nisn LIKE '%$keyword%' OR 
+            alamat LIKE '%$keyword%' OR 
+            asal_sekolah_lama LIKE '%$keyword%' OR 
+            nama_sekolah_tujuan LIKE '%$keyword%'";
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Memasukkan setiap baris hasil query ke dalam array data_surat
+        while($row = $result->fetch_assoc()) {
+            $data_surat[] = $row;
+        }
+    } else {
+        echo "0 results";
+    }
+} else {
+    // Jika tidak ada pencarian, ambil semua data dari tabel surat
+    $sql = "SELECT * FROM rekapsurat";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Memasukkan setiap baris hasil query ke dalam array data_surat
+        while($row = $result->fetch_assoc()) {
+            $data_surat[] = $row;
+        }
+    } else {
+        echo "0 results";
+    }
+}
+
+// Tutup koneksi database
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -60,33 +113,30 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             color: #000 !important; /* Warna teks hitam */
         }
 
-        /* Menambahkan bingkai hitam pada tabel */
-        table {
-            border: 2px solid #000;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
         th, td {
             border: 1px solid #000;
             padding: 8px;
             text-align: center; /* Posisi teks di tengah kolom */
+            width: 10%;
         }
 
         th {
             background-color: #06376e; /* Warna latar belakang header kolom */
             border-bottom: 2px solid #000; /* Garis bawah pada header kolom */
             color: #fff; /* Warna teks putih */
+            width: 10%;
         }
 
         td {
             background-color: #ffffff; /* Warna latar belakang sel-sel */
+            width: 10%;
         }
 
         /* Menyesuaikan margin kolom Nama Siswa dan Tanggal Surat */
         td.nama-siswa, td.tanggal-surat {
             text-align: left; /* Teks diatur rata kiri */
             padding-left: 20px; /* Padding kiri */
+            width: 100%;
         }
 
         /* Style untuk ikon pada kolom Keterangan */
@@ -94,6 +144,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             display: inline-block;
             margin-right: 5px;
         }
+        table {
+        border: 2px solid #000;
+        width:100%;
+        max-width: 50cm; /* Sesuaikan dengan kebutuhan lebar maksimum yang diinginkan */
+    }
 
         /* Menyesuaikan warna teks pada link Logout */
         .nav-link.logout-link {
@@ -141,48 +196,34 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <thead>
                 <tr>
                     <th scope="col">Kode Surat</th>
-                    <th scope="col">Nama Siswa</th>
                     <th scope="col">Tanggal Surat</th>
+                    <th scope="col">Nama Siswa</th>
+                    <th scope="col">NISN</th>
+                    <th scope="col">Alamat</th>
+                    <th scope="col">Asal Sekolah Lama</th>
+                    <th scope="col">Nama Sekolah Tujuan</th>
                     <th scope="col">Keterangan</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td class="nama-siswa">Mark Otto</td>
-                    <td class="tanggal-surat">1 Juni 2024</td>
-                    <td>
-                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Delete</a>
-                        <a href="form.html" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                        <a href="surat_mark_otto.html" download="surat_mark_otto.html" class="btn btn-success btn-sm">
-                            <i class="fas fa-print"></i> Print
-                        </a>
+                <?php foreach ($data_surat as $surat): ?>
+                    <tr>
+                        <td><?php echo $surat['id_surat']; ?></td>
+                        <td><?php echo $surat['tgl']; ?></td>
+                        <td><?php echo $surat['nama_siswa']; ?></td>
+                        <td><?php echo $surat['nisn']; ?></td>
+                        <td><?php echo $surat['alamat']; ?></td>
+                        <td><?php echo $surat['asal_sekolah_lama']; ?></td>
+                        <td><?php echo $surat['nama_sekolah_tujuan']; ?></td>
+                        <td>
+                        <div class="btn-group" role="group" aria-label="Actions">
+                            <a href="print.php?id=<?php echo $surat['id_surat']; ?>" class="btn btn-success btn-sm"><i class="fas fa-print"></i> Print</a>
+                            <a href="edit.php?id=<?php echo $surat['id_surat']; ?>" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                            <a href="delete.php?id=<?php echo $surat['id_surat']; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Hapus</a>
+                        </div>
                     </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="nama-siswa">Jacob Thornton</td>
-                    <td class="tanggal-surat">2 Juni 2024</td>
-                    <td>
-                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Delete</a>
-                        <a href="form.html" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                        <a href="surat_jacob_thornton.html" download="surat_jacob_thornton.html" class="btn btn-success btn-sm">
-                            <i class="fas fa-print"></i> Print
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="nama-siswa">Larry Bird</td>
-                    <td class="tanggal-surat">3 Juni 2024</td>
-                    <td>
-                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Delete</a>
-                        <a href="form.html" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                        <a href="surat_larry_bird.html" download="surat_larry_bird.html" class="btn btn-success btn-sm">
-                            <i class="fas fa-print"></i> Print
-                        </a>
-                    </td>
-                </tr>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -190,65 +231,5 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var suratList = JSON.parse(localStorage.getItem('suratList')) || [];
-        
-            var tbody = document.querySelector('tbody');
-            suratList.forEach(function(surat, index) {
-                var tr = document.createElement('tr');
-                
-                var tdNumber = document.createElement('td');
-                tdNumber.textContent = index + 1;
-
-                var tdTanggalSurat = document.createElement('td');
-                tdTanggalSurat.textContent = surat.kode_surat;
-                tdTanggalSurat.classList.add('kode-surat');
-                
-                var tdNamaSiswa = document.createElement('td');
-                tdNamaSiswa.textContent = surat.nama_siswa;
-                tdNamaSiswa.classList.add('nama-siswa');
-        
-                var tdTanggalSurat = document.createElement('td');
-                tdTanggalSurat.textContent = surat.tgl;
-                tdTanggalSurat.classList.add('tanggal-surat');
-        
-                var tdActions = document.createElement('td');
-                
-                var deleteBtn = document.createElement('a');
-                deleteBtn.href = '#';
-                deleteBtn.classList.add('btn', 'btn-danger', 'btn-sm');
-                deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i> Delete';
-                deleteBtn.addEventListener('click', function() {
-                    suratList.splice(index, 1);
-                    localStorage.setItem('suratList', JSON.stringify(suratList));
-                    window.location.reload();
-                });
-        
-                var editBtn = document.createElement('a');
-                editBtn.href = 'form.html';
-                editBtn.classList.add('btn', 'btn-primary', 'btn-sm');
-                editBtn.innerHTML = '<i class="fas fa-edit"></i> Edit';
-        
-                var printBtn = document.createElement('a');
-                printBtn.href = `surat_${surat.nama_siswa.replace(/\s+/g, '_').toLowerCase()}.html`;
-                printBtn.download = `surat_${surat.nama_siswa.replace(/\s+/g, '_').toLowerCase()}.html`;
-                printBtn.classList.add('btn', 'btn-success', 'btn-sm');
-                printBtn.innerHTML = '<i class="fas fa-print"></i> Print';
-        
-                tdActions.appendChild(deleteBtn);
-                tdActions.appendChild(editBtn);
-                tdActions.appendChild(printBtn);
-        
-                tr.appendChild(tdNumber);
-                tr.appendChild(tdNamaSiswa);
-                tr.appendChild(tdTanggalSurat);
-                tr.appendChild(tdActions);
-        
-                tbody.appendChild(tr);
-            });
-        });
-        </script>
-        
 </body>
 </html>
