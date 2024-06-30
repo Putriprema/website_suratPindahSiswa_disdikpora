@@ -147,7 +147,7 @@
                                 Navigasi
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Home</a>
+                                <a class="dropdown-item" href="index.php">Home</a>
                                 <a class="dropdown-item" href="loginadmin.php">Login sebagai Admin</a>
                             </div>
                         </li>

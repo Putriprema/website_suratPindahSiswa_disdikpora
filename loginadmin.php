@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+
+// Proses form jika method POST digunakan
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Misalnya, cek apakah username dan password sesuai
+    if ($username === 'admin' && $password === 'admin123') {
+        // Set session jika login sukses
+        $_SESSION['loggedin'] = true;
+        // Redirect ke halaman rekapsurat.php
+        header('Location: rekapsurat.php');
+        exit;
+    } else {
+        // Tampilkan pesan error jika login gagal
+        $error = "Maaf, username atau password salah. Silakan coba lagi.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +41,7 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                 <input type="checkbox" id="togglePassword"> Show Password
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary" id="loginButton" disabled>Login</button>
             <span id="error" style="color: red; display: none;">Maaf Username atau password salah! silahkan periksa kembali</span>
         </form>
     </div>
@@ -31,8 +53,10 @@
             var errorElement = document.getElementById('error');
             
             if (username === 'admin' && password === 'admin123') {
-                window.location.href = 'datasurat.php';
+                // Redirect to rekapsurat.php if login is successful
+                window.location.href = 'rekapsurat.php';
             } else {
+                // Show error message and prevent form submission
                 errorElement.style.display = 'block';
                 event.preventDefault();
             }
@@ -44,6 +68,18 @@
                 passwordInput.type = 'text';
             } else {
                 passwordInput.type = 'password';
+            }
+        });
+
+        // Enable/disable login button based on password input
+        document.getElementById('password').addEventListener('input', function() {
+            var password = this.value;
+            var loginButton = document.getElementById('loginButton');
+            
+            if (password === 'admin123') {
+                loginButton.disabled = false;
+            } else {
+                loginButton.disabled = true;
             }
         });
     </script>

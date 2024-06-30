@@ -1,9 +1,10 @@
+<!-- rekapsurat.html -->
 <?php
 session_start();
 
 // Cek apakah pengguna sudah login
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header('Location: loginadmin.html');
+    header('Location: rekapsurat.php');
     exit;
 }
 ?>
@@ -112,7 +113,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link active logout-link" href="index.html">Logout</a>
+                        <a class="nav-link active logout-link" href="index.php">Logout</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -120,8 +121,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                             Menu Utama
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="index.html">Home</a>
-                            <a class="dropdown-item" href="surat.html">Form Surat</a>
+                            <a class="dropdown-item" href="index.php">Home</a>
+                            <a class="dropdown-item" href="form.php">Form Surat</a>
                             <div class="dropdown-divider"></div>
                         </div>
                     </li>
@@ -247,6 +248,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 tbody.appendChild(tr);
             });
         });
-    </script>
+        </script>
+        
 </body>
 </html>
