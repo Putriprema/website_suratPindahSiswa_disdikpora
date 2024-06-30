@@ -67,42 +67,29 @@
             text-decoration: underline;
         }
 
-        /* Style untuk tombol kembali */
+        /* Style untuk tombol simpan */
+        .save-button {
+            background-color: #27850d; /* Warna hijau */
+            color: #fff; /* Warna teks putih */
+            border: none; /* Menghilangkan border */
+            padding: 10px 20px; /* Padding agar tombol terlihat lebih besar */
+            cursor: pointer; /* Mengubah cursor menjadi pointer saat dihover */
+            border-radius: 5px; /* Membuat sudut tombol lebih bulat */
+            display: inline-block; /* Tampilkan tombol di layar */
+            margin-right: 10px; /* Margin kanan antara tombol */
+        }
+
+        /* Style untuk tombol kembali ke form */
         .back-button {
-            display: none; /* Sembunyikan tombol secara default */
+            background-color: #007bff; /* Warna biru */
+            color: #fff; /* Warna teks putih */
+            border: none; /* Menghilangkan border */
+            padding: 10px 20px; /* Padding agar tombol terlihat lebih besar */
+            cursor: pointer; /* Mengubah cursor menjadi pointer saat dihover */
+            border-radius: 5px; /* Membuat sudut tombol lebih bulat */
+            display: inline-block; /* Tampilkan tombol di layar */
+            margin-right: 10px; /* Margin kanan antara tombol */
         }
-
-        /* Menampilkan tombol hanya di layar */
-        @media screen {
-            .back-button {
-                display: block; /* Tampilkan tombol di layar */
-                position: fixed; /* Tetap di pojok kanan bawah */
-                bottom: 20px;
-                right: 20px;
-                padding: 10px 20px;
-                background-color: #007bff;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-        }
-
-        /* Sembunyikan tombol ketika halaman dicetak */
-        @media print {
-            .back-button {
-                display: none;
-            }
-        }
-        .print-button {
-        background-color: #27850d; /* Warna biru sesuai dengan warna biru default Bootstrap */
-        color: #fff; /* Warna teks putih */
-        border: none; /* Menghilangkan border */
-        padding: 10px 20px; /* Padding agar tombol terlihat lebih besar */
-        cursor: pointer; /* Mengubah cursor menjadi pointer saat dihover */
-        border-radius: 5px; /* Membuat sudut tombol lebih bulat */
-        display: block; /* Tampilkan tombol di layar */
-    }
 
     </style>
 </head>
@@ -136,14 +123,19 @@
         <p style="text-align: right;">NIP. 196804041994031016</p>
     </div>
 
+    <!-- Tombol kembali ke form -->
+    <button class="back-button" onclick="window.location.href = 'form.php';">Kembali ke Form</button>
 
-    <!-- Tombol cetak -->
-<button class="print-button" onclick="window.print()">Cetak Surat</button>
-
-<!-- Tombol kembali -->
-<button class="back-button" onclick="window.history.back()">Kembali ke Form</button>
+    <!-- Tombol simpan -->
+    <button class="save-button" onclick="simpanSurat()">Simpan</button>
 
     <script>
+        function simpanSurat() {
+            // Simpan proses yang diperlukan di sini, misalnya penyimpanan ke database atau ke halaman konfirmasi
+            // Redirect ke halaman konfirmasi.php
+            window.location.href = 'konfirmasi.php';
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             // Ambil data dari localStorage
             var formData = JSON.parse(localStorage.getItem('formData'));
