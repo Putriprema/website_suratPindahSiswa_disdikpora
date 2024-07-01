@@ -51,7 +51,7 @@
         }
 
         header h1 {
-            margin-top: 6cm; /* Jarak dari atas */
+            margin-top: 20cm; /* Jarak dari atas */
         }
 
         .header-content {
@@ -225,7 +225,6 @@
             </div>
         </div>
     </nav>
-
     <header>
         <div class="header-content">
             <h1>Form Data Diri Siswa</h1>
@@ -266,16 +265,44 @@
                         <textarea class="form-control" id="alamat" rows="3" placeholder="Masukkan Alamat" autocomplete="off"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="kabupaten" class="form-label">Kabupaten/kota</label>
-                        <input type="text" class="form-control" id="kabupaten" placeholder="Masukkan Kabupaten/kota" autocomplete="off">
+                        <label for="kecamatan_sekolah_lama" class="form-label">Kecamatan</label>
+                        <input type="text" class="form-control" id="kecamatan_sekolah_lama" placeholder="Masukkan Kecamatan" autocomplete="off">
                     </div>
                     <div class="mb-3">
-                        <label for="provinsi" class="form-label">Provinsi</label>
-                        <input type="text" class="form-control" id="provinsi" placeholder="Masukkan Provinsi" autocomplete="off">
+                        <label for="kabupaten_sekolah_lama" class="form-label">Kabupaten/kota</label>
+                        <input type="text" class="form-control" id="kabupaten_sekolah_lama" placeholder="Masukkan Kabupaten/kota" autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                        <label for="provinsi_sekolah_lama" class="form-label">Provinsi</label>
+                        <input type="text" class="form-control" id="provinsi_sekolah_lama" placeholder="Masukkan Provinsi" autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                        <label for="kelas" class="form-label">Kelas</label>
+                        <input type="text" class="form-control" id="kelas" placeholder="Masukkan Kelas" autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Surat_ket_pindah" class="form-label">Surat Keterangan Pindah</label>
+                        <input type="text" class="form-control" id="Surat_ket_pindah" placeholder="Masukkan Surat Keternagan Pindah" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label for="nama_sekolah_tujuan" class="form-label">Nama Sekolah tujuan</label>
                         <input type="text" class="form-control" id="nama_sekolah_tujuan" placeholder="Masukka Nama Sekolah tujuan" autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                        <label for="alamat_sekolah_tujuan" class="form-label">Alamat</label>
+                        <input type="text" class="form-control" id="alamat_sekolah_tujuan" placeholder="Masukka Alamat Sekolah tujuan" autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                        <label for="kecamatan_sekolah_tujuan" class="form-label">Kecamatan</label>
+                        <input type="text" class="form-control" id="kecamatan_sekolah_tujuan" placeholder="Masukkan Kecamatan" autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                        <label for="kabupaten_sekolah_tujuan" class="form-label">Kabupaten</label>
+                        <input type="text" class="form-control" id="kabupaten_sekolah_tujuan" placeholder="Masukkan kabupaten" autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                        <label for="provinsi_sekolah_tujuan" class="form-label">Provinsi</label>
+                        <input type="text" class="form-control" id="provinsi_sekolah_tujuan" placeholder="Masukkan Provinsi" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label for="alasan" class="form-label">Alasan pindah sekolah</label>
@@ -300,7 +327,6 @@
                 var kodeAwal = '400.3.5/';
                 return `${kodeAwal}${lastSuratNumber}/Disdikpora`;
             }
-
             // Tampilkan kode surat awal pada input kode surat
             document.getElementById('kode_surat').value = generateKodeSurat();
 
@@ -319,18 +345,26 @@
                     peringatan.textContent = ''; // Hapus pesan peringatan jika valid
                 }
 
+                window.location.href = 'surat.php';
                 // Simpan data ke localStorage
                 var data = {
-                    kode_surat: generateKodeSurat(), // Menggunakan kode surat terakhir
+                    kode_surat: generateKodeSurat(),
                     tgl: tanggalInput,
                     nama_siswa: document.getElementById('nama_siswa').value,
                     nisn: document.getElementById('nisn').value,
                     jenis_kelamin: document.getElementById('jenis_kelamin').value,
                     asal_sekolah_lama: document.getElementById('asal_sekolah_lama').value,
                     alamat: document.getElementById('alamat').value,
-                    kabupaten: document.getElementById('kabupaten').value,
-                    provinsi: document.getElementById('provinsi').value,
+                    kecamatan_sekolah_lama: document.getElementById('kecamatan_sekolah_lama').value,
+                    kabupaten_sekolah_lama: document.getElementById('kabupaten_sekolah_lama').value,
+                    provinsi_sekolah_lama: document.getElementById('provinsi_sekolah_lama').value,
+                    kelas: document.getElementById('kelas').value,
+                    Surat_ket_pindah: document.getElementById('Surat_ket_pindah').value,
                     nama_sekolah_tujuan: document.getElementById('nama_sekolah_tujuan').value,
+                    alamat_sekolah_tujuan: document.getElementById('alamat_sekolah_tujuan').value,
+                    kecamatan_sekolah_tujuan: document.getElementById('kecamatan_sekolah_tujuan').value,
+                    kabupaten_sekolah_tujuan: document.getElementById('kabupaten_sekolah_tujuan').value,
+                    provinsi_sekolah_tujuan: document.getElementById('provinsi_sekolah_tujuan').value,
                     alasan: document.getElementById('alasan').value
                 };
 
@@ -339,8 +373,6 @@
 
                 localStorage.setItem('formData', JSON.stringify(data));
 
-                // Redirect ke halaman 
-                window.location.href = 'surat.php';
             });
 
             function isValidDate(dateString) {

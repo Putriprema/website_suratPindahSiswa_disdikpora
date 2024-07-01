@@ -107,11 +107,18 @@
         <p class="indent">Jenis Kelamin         : <span id="jenis_kelamin_output"></span></p>
         <p class="indent">Asal Sekolah Lama     : <span id="asal_sekolah_lama_output"></span></p>
         <p class="indent">Alamat                : <span id="alamat_output"></span></p>
-        <p class="indent">Kabupaten/Kota        : <span id="kabupaten_output"></span></p>
-        <p class="indent">Provinsi              : <span id="provinsi_output"></span></p>
+        <p class="indent">Kecamatan             : <span id="kecamatan_sekolah_lama_output"></span></p>
+        <p class="indent">Kabupaten/Kota        : <span id="kabupaten_sekolah_lama_output"></span></p>
+        <p class="indent">Provinsi              : <span id="provinsi_sekolah_lama_output"></span></p>
+        <p class="indent">Kelas                 : <span id="kelas_output"></span></p>
         <p>Telah disetujui untuk pindah sekolah :</p>
+        <p class="indent">Surat Keterangan Pindah : <span id="Surat_ket_pindah_output"></span></p>
         <p class="indent">Nama Sekolah Tujuan   : <span id="nama_sekolah_tujuan_output"></span></p>
-        <p class="indent">Alasan Pindah Sekolah : <span id="alasan_output"></span></p>
+        <p class="indent">Alamat                : <span id="alamat_sekolah_tujuan_output"></span></p>
+        <p class="indent">Kecamatan             : <span id="kecamatan_sekolah_tujuan_output"></span></p>
+        <p class="indent">Kabupaten             : <span id="kabupaten_sekolah_tujuan_output"></span></p>
+        <p class="indent">Provinsi              : <span id="provinsi_sekolah_tujuan_output"></span></p>
+        <p class="indent">Alasan Pindah         : <span id="alasan_output"></span></p>
         <p class="tab">dan menyatakan surat keterangan ini adalah dokumen sah sebagai bukti adanya persetujuan mutasi pada Aplikasi Dapodik semester ganjil tahun 2024/2025 di sekolah tujuan.</p>
         <p>Demikian surat keterangan ini dikeluarkan untuk dapat dipergunakan.</p>
     </div>
@@ -140,7 +147,7 @@
             // Ambil data dari localStorage
             var formData = JSON.parse(localStorage.getItem('formData'));
 
-            // Menampilkan data di halaman surat.html
+            // Menampilkan data di halaman surat.php
             document.getElementById('kode_surat_output').textContent = formData.kode_surat;
             document.getElementById('tgl_output').textContent = formData.tgl;
             document.getElementById('nama_siswa_output').textContent = formData.nama_siswa;
@@ -148,9 +155,16 @@
             document.getElementById('jenis_kelamin_output').textContent = formData.jenis_kelamin;
             document.getElementById('asal_sekolah_lama_output').textContent = formData.asal_sekolah_lama;
             document.getElementById('alamat_output').textContent = formData.alamat;
-            document.getElementById('kabupaten_output').textContent = formData.kabupaten;
-            document.getElementById('provinsi_output').textContent = formData.provinsi;
+            document.getElementById('kecamatan_sekolah_lama_output').textContent = formData.kecamatan_sekolah_lama;
+            document.getElementById('kabupaten_sekolah_lama_output').textContent = formData.kabupaten_sekolah_lama;
+            document.getElementById('provinsi_sekolah_lama_output').textContent = formData.provinsi_sekolah_lama;
+            document.getElementById('kelas_output').textContent = formData.kelas;
+            document.getElementById('Surat_ket_pindah_output').textContent = formData.Surat_ket_pindah;
             document.getElementById('nama_sekolah_tujuan_output').textContent = formData.nama_sekolah_tujuan;
+            document.getElementById('alamat_sekolah_tujuan_output').textContent = formData.alamat_sekolah_tujuan;
+            document.getElementById('kecamatan_sekolah_tujuan_output').textContent = formData.kecamatan_sekolah_tujuan;
+            document.getElementById('kabupaten_sekolah_tujuan_output').textContent = formData.kabupaten_sekolah_tujuan;
+            document.getElementById('provinsi_sekolah_tujuan_output').textContent = formData.provinsi_sekolah_tujuan;
             document.getElementById('alasan_output').textContent = formData.alasan;
 
             // Set tanggal pada bagian tanda tangan
@@ -158,7 +172,7 @@
             var date = today.getDate();
             var month = today.toLocaleString('default', { month: 'long' });
             var year = today.getFullYear();
-            document.getElementById('tgl').textContent = `Denpasar, ${date} ${month.toUpperCase()} ${year}`;
+            document.getElementById('tgl').textContent = `${date} ${month.toUpperCase()} ${year}`;
 
             // Hapus data dari localStorage setelah digunakan
             localStorage.removeItem('formData');
